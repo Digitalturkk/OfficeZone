@@ -7,4 +7,7 @@ public interface OfficeService {
     Office createOffice(Office office);
     Office getOfficeById(Long id);
     void deleteOffice(Long id);
+
+    OfficeDTO createOfficeDTO(Office office);
+    List<OfficeDTO> createOfficeDTOList(List<Office> offices);
 }

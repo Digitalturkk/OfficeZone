@@ -1,5 +1,6 @@
 package com.OfficeZone.officeZone.Office;
 
+import com.OfficeZone.officeZone.LandLordCompany.LandLordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,8 @@ public class OfficeImplement implements OfficeService {
 
     @Autowired
     private OfficeRepository officeRepository;
+    @Autowired
+    private LandLordService landLordService;
 
     @Override
     public List<Office> getAllOffices() {
@@ -29,5 +32,27 @@ public class OfficeImplement implements OfficeService {
     @Override
     public void deleteOffice(Long id) {
         officeRepository.deleteById(id);
+    }
+
+    @Override
+    public OfficeDTO createOfficeDTO(Office office) {
+        return new OfficeDTO(
+                office.getOfficeId(),
+                office.getOfficeName(),
+                office.getOfficeType().toString(),
+                office.getOfficeLocation(),
+                office.getOfficeDescription(),
+                office.getOfficePrice(),
+                office.getOfficeCapacity(),
+                office.getAvailable(),
+                office.getLandLordCompany().getLandLordName()
+        );
+    }
+
+    @Override
+    public List<OfficeDTO> createOfficeDTOList(List<Office> offices) {
+        return offices.stream()
+                .map(this::createOfficeDTO)
+                .toList();
     }
 }
