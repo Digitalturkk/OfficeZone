@@ -1,5 +1,7 @@
-package com.OfficeZone.officeZone.LandLordCompany;
+package com.OfficeZone.officeZone.LandLordCompany.Services;
 
+import com.OfficeZone.officeZone.LandLordCompany.LandLord;
+import com.OfficeZone.officeZone.LandLordCompany.LandLordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,17 +14,17 @@ public class LandLordImplement implements LandLordService {
     private LandLordRepository landLordRepository;
 
     @Override
-    public LandLordCompany createLandLord(LandLordCompany landLordCompany) {
-        return landLordRepository.save(landLordCompany);
+    public LandLord createLandLord(LandLord landLord) {
+        return landLordRepository.save(landLord);
     }
 
     @Override
-    public LandLordCompany getLandLordById(Long id) {
+    public LandLord getLandLordById(Long id) {
         return landLordRepository.findById(id).orElse(null);
     }
 
     @Override
-    public List<LandLordCompany> getAllLandLords() {
+    public List<LandLord> getAllLandLords() {
         return landLordRepository.findAll();
     }
 

@@ -1,4 +1,7 @@
-package com.OfficeZone.officeZone.Office;
+package com.OfficeZone.officeZone.Office.Services;
+
+import com.OfficeZone.officeZone.Office.Office;
+import com.OfficeZone.officeZone.Office.OfficeDTO;
 
 import java.util.List;
 

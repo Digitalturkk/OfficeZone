@@ -1,6 +1,9 @@
-package com.OfficeZone.officeZone.Office;
+package com.OfficeZone.officeZone.Office.Services;
 
-import com.OfficeZone.officeZone.LandLordCompany.LandLordService;
+import com.OfficeZone.officeZone.LandLordCompany.Services.LandLordService;
+import com.OfficeZone.officeZone.Office.Office;
+import com.OfficeZone.officeZone.Office.OfficeDTO;
+import com.OfficeZone.officeZone.Office.OfficeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

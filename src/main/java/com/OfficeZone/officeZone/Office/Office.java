@@ -1,7 +1,7 @@
 package com.OfficeZone.officeZone.Office;
 
 import com.OfficeZone.officeZone.CustomEnums.OfficeTypes;
-import com.OfficeZone.officeZone.LandLordCompany.LandLordCompany;
+import com.OfficeZone.officeZone.LandLordCompany.LandLord;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -36,7 +36,7 @@ public class Office {
     private Boolean isAvailable;
     @ManyToOne(optional = false)
     @JoinColumn(name = "company_id", nullable = false)
-    private LandLordCompany landLordCompany;
+    private LandLord landLord;
 
     public Office() {
     }
@@ -115,11 +115,11 @@ public class Office {
         isAvailable = available;
     }
 
-    public LandLordCompany getLandLordCompany() {
-        return landLordCompany;
+    public LandLord getLandLordCompany() {
+        return landLord;
     }
 
-    public void setLandLordCompany(LandLordCompany landLordCompany) {
-        this.landLordCompany = landLordCompany;
+    public void setLandLordCompany(LandLord landLord) {
+        this.landLord = landLord;
     }
 }

@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name="landlord_companies")
-public class LandLordCompany {
+public class LandLord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long companyId;
@@ -25,13 +25,13 @@ public class LandLordCompany {
     @Column(nullable = false)
     private String landLordPassword;
 
-    @OneToMany(mappedBy = "landLordCompany", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "landLord", cascade = CascadeType.ALL)
     private List<Office> offices;
 
-    public LandLordCompany(){
+    public LandLord(){
     }
 
-    public LandLordCompany(String landLordName, String landLordEmail, String landLordPhone, String landLordPassword, List<Office> offices) {
+    public LandLord(String landLordName, String landLordEmail, String landLordPhone, String landLordPassword, List<Office> offices) {
         this.landLordName = landLordName;
         this.landLordEmail = landLordEmail;
         this.landLordPhone = landLordPhone;
