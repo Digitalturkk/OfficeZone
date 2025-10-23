@@ -2,9 +2,12 @@ package com.OfficeZone.officeZone.Office;
 
 import com.OfficeZone.officeZone.CustomEnums.OfficeTypes;
 import com.OfficeZone.officeZone.LandLordCompany.LandLord;
+import com.OfficeZone.officeZone.Tenant.Tenant;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+
+import java.util.List;
 
 @Entity
 @Table(name = "offices")
@@ -38,10 +41,19 @@ public class Office {
     @JoinColumn(name = "company_id", nullable = false)
     private LandLord landLord;
 
+    @ManyToMany(
+        fetch = FetchType.LAZY,
+        cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+        }
+    )
+    private List<Tenant> tenants;
+
     public Office() {
     }
 
-    public Office(String officeName, OfficeTypes officeType, String officeLocation, String officeDescription, Double officePrice, Integer officeCapacity, Boolean isAvailable) {
+    public Office(String officeName, OfficeTypes officeType, String officeLocation, String officeDescription, Double officePrice, Integer officeCapacity, Boolean isAvailable, LandLord landLord, List<Tenant> tenants) {
         this.officeName = officeName;
         this.officeType = officeType;
         this.officeLocation = officeLocation;
@@ -49,6 +61,8 @@ public class Office {
         this.officePrice = officePrice;
         this.officeCapacity = officeCapacity;
         this.isAvailable = isAvailable;
+        this.landLord = landLord;
+        this.tenants = tenants;
     }
 
     public Long getOfficeId() {
@@ -121,5 +135,21 @@ public class Office {
 
     public void setLandLordCompany(LandLord landLord) {
         this.landLord = landLord;
+    }
+
+    public LandLord getLandLord() {
+        return landLord;
+    }
+
+    public void setLandLord(LandLord landLord) {
+        this.landLord = landLord;
+    }
+
+    public List<Tenant> getTenants() {
+        return tenants;
+    }
+
+    public void setTenants(List<Tenant> tenants) {
+        this.tenants = tenants;
     }
 }

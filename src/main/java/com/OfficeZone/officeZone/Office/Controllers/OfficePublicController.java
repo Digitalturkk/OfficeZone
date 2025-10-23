@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/offices/public")
+@RequestMapping("/api/public/offices")
 public class OfficePublicController {
 
     @Autowired
